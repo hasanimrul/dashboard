@@ -72,7 +72,7 @@ const Dashboard = () => {
     },
   ];
   return (
-    <div className="p-8 text-black">
+    <div className="lg:p-8 p-2 text-black w-full">
       {/* Header Section */}
       <div className="flex lg:flex-row md:flex-row flex-col justify-between lg:items-center gap-5 mb-8 text-black">
         <div>
@@ -109,9 +109,7 @@ const Dashboard = () => {
       </div>
 
       {/* Metrics Cards */}
-      <div className="max-w-max">
         <MetricsCard />
-      </div>
 
       {/* Table Section */}
       <Table tableData={tableData} />

@@ -1,42 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Table = ({ tableData }) => {
+  const [checkedRows, setCheckedRows] = useState([]);
+
+  const handleCheckboxChange = (index) => {
+    setCheckedRows((prevChecked) =>
+      prevChecked.includes(index)
+        ? prevChecked.filter((i) => i !== index)
+        : [...prevChecked, index]
+    );
+  };
+
   return (
-    <div className="dark:bg-gray-800 rounded-xl shadow-sm w-full">
+    <div className="dark:bg-gray-800 rounded-xl shadow-sm  w-full">
       {/* Table Header */}
-      <div className="flex lg:flex-row flex-col gap-3 lg:items-center justify-between mb-4 p-6 ">
-        <div className="flex lg:items-center gap-4 bg-[#F9FAF5] dark:bg-gray-700 p-2 rounded ">
-          <button className="lg:px-4 px-2 py-2 bg-gray-100 dark:bg-gray-500 dark:text-white rounded-lg text-sm font-medium">
+      <div className="flex lg:flex-row md:flex-row flex-col gap-3 lg:items-center justify-between mb-4 lg:p-6 w-full">
+        <div className="flex lg:items-center flex-wrap lg:flex-nowrap gap-4 lg:bg-[#F9FAF5] lg:dark:bg-gray-700 p-2 rounded w-full whitespace-nowrap">
+          <button className="px-4 py-2 bg-gray-100 dark:bg-gray-500 dark:text-white rounded-lg text-sm font-medium">
             All hires{" "}
             <span className="ml-2 bg-yellow-400 p-1 rounded text-xs">60</span>
           </button>
-          <button className="lg:px-4 px-2 py-2 text-sm font-medium text-gray-500 dark:text-white">
+          <button className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-white">
             Employees{" "}
             <span className="ml-2 bg-gray-100 dark:bg-gray-500 p-1 rounded  text-xs">
               10
             </span>
           </button>
-          <button className="lg:px-4 px-2 py-2 text-sm font-medium text-gray-500 dark:text-white">
+          <button className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-white">
             Global Payroll{" "}
             <span className="ml-2 bg-gray-100 dark:bg-gray-500 p-1 rounded  text-xs">
               20
             </span>
           </button>
-          <button className="lg:px-4 px-2 py-2 text-sm font-medium text-gray-500 dark:text-white">
+          <button className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-white">
             Contractors{" "}
             <span className="ml-2 bg-gray-100 dark:bg-gray-500 p-1 rounded  text-xs">
               20
             </span>
           </button>
-          <button className="lg:px-4 px-2 py-2 text-sm font-medium text-gray-500 dark:text-white">
+          <button className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-white">
             Direct Employees{" "}
             <span className="ml-2 bg-gray-100 dark:bg-gray-500 p-1 rounded   text-xs">
               10
             </span>
           </button>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="bg-[#E5F9A9] hover:bg-[#d9f089] lg:px-4 px-2 py-2 rounded-lg flex items-center gap-2">
+        <div className="flex items-center gap-4 p-2 w-full whitespace-nowrap">
+          <button className="bg-[#E5F9A9] hover:bg-[#d9f089] px-4 py-2 rounded-lg flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -51,7 +61,7 @@ const Table = ({ tableData }) => {
             </svg>
             Add New
           </button>
-          <button className="border dark:border-gray-400 dark:text-white lg:px-4 px-2 py-2 rounded-lg flex items-center gap-2">
+          <button className="border dark:border-gray-400 dark:text-white px-4 py-2 rounded-lg flex items-center gap-2">
             <svg
               width="21"
               height="20"
@@ -74,155 +84,166 @@ const Table = ({ tableData }) => {
       </div>
 
       {/* Table Content */}
-
-      <table className="w-full">
-        <thead className="bg-gray-50 dark:bg-gray-700 border-b dark:border-gray-400 w-full whitespace-nowrap">
-          <tr>
-            <th className="w-8 p-4">
-              <input type="checkbox" className="rounded border-gray-300" />
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-              Name
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-              Employment ID
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-              Type of hire
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-              Country
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-              License use
-            </th>
-            <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
-              Status
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-400 w-full whitespace-nowrap">
-          {tableData.map((data, i) => {
-            return (
-              <tr key={i}>
-                <td className="w-8 p-4">
-                  <input type="checkbox" className="rounded border-gray-300" />
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-3">
-                    <img src={data.img} alt="" className="l" />
-                    <span className="text-sm font-medium dark:text-white">
-                      {data.name}
-                    </span>
-                  </div>
-                </td>
-                <td className="px-6 py-4 dark:text-white">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm">{data.empId}</span>
-                    <svg
-                    className=""
-                      width="17"
-                      height="16"
-                      viewBox="0 0 17 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        x="0.899994"
-                        y="0.5"
-                        width="10.2941"
-                        height="9.66667"
-                        rx="1.5"
-                        stroke="#70747B"
-                      />
-                      <rect
-                        x="5.60605"
-                        y="5.8334"
-                        width="10.2941"
-                        height="9.66667"
-                        rx="1.5"
-                        stroke="#70747B"
-                      />
-                    </svg>
-                  </div>
-                </td>
-                <td className="px-6 py-4 text-sm dark:text-white">
-                  {data.position}
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={data.flag}
-                      alt={data.country}
-                      className=" rounded-sm"
+      <div className="overflow-x-auto w-full">
+        <table className="w-full">
+          <thead className="bg-gray-50 dark:bg-gray-700 border rounded-md dark:border-gray-400 w-full whitespace-nowrap">
+            <tr>
+              <th className="w-8 p-4">
+                <input type="checkbox" className="rounded border-gray-300" />
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+                Name
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+                Employment ID
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+                Type of hire
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+                Country
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+                License use
+              </th>
+              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody className="w-full whitespace-nowrap">
+            {tableData.map((data, i) => {
+              return (
+                <tr
+                  key={i}
+                  className={`w-full ${
+                    checkedRows.includes(i) ? "bg-[#F9FAF5] dark:bg-gray-700" : ""
+                  }`}
+                >
+                  <td className="w-8 p-4">
+                    <input
+                      type="checkbox"
+                      className="rounded"
+                      checked={checkedRows.includes(i)}
+                      onChange={() => handleCheckboxChange(i)}
                     />
-                    <span className="text-sm dark:text-white">
-                      {data.country}
-                    </span>
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-24 h-2  rounded-full dark:bg-gray-500 bg-gray-200`}
-                    >
-                      <div
-                        className={`${i === 0 && "w-1/5"} ${
-                          i === 1 && "w-4/5"
-                        } ${i === 2 && "w-4/5"} ${i === 3 && "w-3/5"} ${
-                          i === 4 && "w-4/5"
-                        } ${i === 5 && "w-3/5"} ${i === 0 && "bg-[#F41E7E]"} ${
-                          i === 1 && "bg-[#5A05FF]"
-                        } ${i === 2 && "bg-[#38B2F5]"} ${
-                          i === 3 && "bg-[#FF9800]"
-                        } ${i === 4 && "bg-[#38B2F5]"} ${
-                          i === 5 && "bg-[#FF9800]"
-                        } h-2 rounded-full`}
-                      ></div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <img src={data.img} alt="" className="l" />
+                      <span className="text-sm font-medium dark:text-white">
+                        {data.name}
+                      </span>
                     </div>
-                    <span className="text-sm dark:text-white">
-                      {data.license}
-                    </span>
-                  </div>
-                </td>
-                <td className="px-6 py-4 flex flex-col items-end">
-                  <h3
-                    className={`px-3 py-1 flex items-center gap-2 ${
-                      data.status === "Draft" && "bg-[#FCCE44] text-white"
-                    } ${
-                      data.status === "New Hire" && "bg-[#D9F27E] text-black"
-                    }  rounded text-sm`}
-                  >
-                    {data.status === "Draft" ? (
+                  </td>
+                  <td className="px-6 py-4 dark:text-white">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm">{data.empId}</span>
                       <svg
-                        width="6"
-                        height="6"
-                        viewBox="0 0 6 6"
+                        className=""
+                        width="17"
+                        height="16"
+                        viewBox="0 0 17 16"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <circle cx="3" cy="3" r="3" fill="white" />
+                        <rect
+                          x="0.899994"
+                          y="0.5"
+                          width="10.2941"
+                          height="9.66667"
+                          rx="1.5"
+                          stroke="#70747B"
+                        />
+                        <rect
+                          x="5.60605"
+                          y="5.8334"
+                          width="10.2941"
+                          height="9.66667"
+                          rx="1.5"
+                          stroke="#70747B"
+                        />
                       </svg>
-                    ) : (
-                      <svg
-                        width="6"
-                        height="6"
-                        viewBox="0 0 6 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-sm dark:text-white">
+                    {data.position}
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={data.flag}
+                        alt={data.country}
+                        className=" rounded-sm"
+                      />
+                      <span className="text-sm dark:text-white">
+                        {data.country}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className={`w-24 h-2  rounded-full dark:bg-gray-500 bg-gray-200`}
                       >
-                        <circle cx="3" cy="3" r="3" fill="#393C43" />
-                      </svg>
-                    )}
+                        <div
+                          className={`${i === 0 && "w-1/5"} ${
+                            i === 1 && "w-4/5"
+                          } ${i === 2 && "w-4/5"} ${i === 3 && "w-3/5"} ${
+                            i === 4 && "w-4/5"
+                          } ${i === 5 && "w-3/5"} ${
+                            i === 0 && "bg-[#F41E7E]"
+                          } ${i === 1 && "bg-[#5A05FF]"} ${
+                            i === 2 && "bg-[#38B2F5]"
+                          } ${i === 3 && "bg-[#FF9800]"} ${
+                            i === 4 && "bg-[#38B2F5]"
+                          } ${i === 5 && "bg-[#FF9800]"} h-2 rounded-full`}
+                        ></div>
+                      </div>
+                      <span className="text-sm dark:text-white">
+                        {data.license}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 flex flex-col items-end">
+                    <h3
+                      className={`px-3 py-1 flex items-center gap-2 ${
+                        data.status === "Draft" && "bg-[#FCCE44] text-white"
+                      } ${
+                        data.status === "New Hire" && "bg-[#D9F27E] text-black"
+                      }  rounded text-sm`}
+                    >
+                      {data.status === "Draft" ? (
+                        <svg
+                          width="6"
+                          height="6"
+                          viewBox="0 0 6 6"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle cx="3" cy="3" r="3" fill="white" />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="6"
+                          height="6"
+                          viewBox="0 0 6 6"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle cx="3" cy="3" r="3" fill="#393C43" />
+                        </svg>
+                      )}
 
-                    <span>{data.status}</span>
-                  </h3>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                      <span>{data.status}</span>
+                    </h3>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
