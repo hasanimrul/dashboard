@@ -4,7 +4,7 @@ const MetricsCard = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 mb-8 w-full">
       {/* Total Applied Card */}
-      <div className="dark:bg-gray-800 p-6 rounded-xl shadow-sm w-full">
+      <div className="dark:bg-gray-800 bg-white p-6 rounded-xl shadow-sm w-full">
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             <div className="bg-[#E5F9A9] p-2 rounded-lg">
@@ -66,7 +66,7 @@ const MetricsCard = () => {
         </div>
       </div>
       {/* Total Invitation Card */}
-      <div className="dark:bg-gray-800 p-6 rounded-xl shadow-sm w-full">
+      <div className="dark:bg-gray-800 bg-white p-6 rounded-xl shadow-sm w-full">
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             <div className="border border-[#FCCE44] p-2 rounded-lg">
@@ -117,7 +117,7 @@ const MetricsCard = () => {
       </div>
 
       {/* Total Hiring Card */}
-      <div className="dark:bg-gray-800 p-6 rounded-xl shadow-sm w-full">
+      <div className="dark:bg-gray-800 bg-white p-6 rounded-xl shadow-sm w-full">
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             <div className="border border-[#FCCE44] p-2 rounded-lg">

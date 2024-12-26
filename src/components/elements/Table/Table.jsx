@@ -12,10 +12,10 @@ const Table = ({ tableData }) => {
   };
 
   return (
-    <div className="dark:bg-gray-800 rounded-xl shadow-sm  w-full">
+    <div className="dark:bg-gray-800 bg-white rounded-xl shadow-sm  w-full lg:p-6">
       {/* Table Header */}
-      <div className="flex lg:flex-row md:flex-row flex-col gap-3 lg:items-center justify-between mb-4 lg:p-6 w-full">
-        <div className="flex lg:items-center flex-wrap lg:flex-nowrap gap-4 lg:bg-[#F9FAF5] lg:dark:bg-gray-700 p-2 rounded w-full whitespace-nowrap">
+      <div className="flex lg:flex-row md:flex-row flex-col gap-3 lg:items-center justify-between mb-4  w-full">
+        <div className="flex lg:items-center justify-between flex-wrap lg:flex-nowrap gap-4 lg:bg-[#F9FAF5] lg:dark:bg-gray-700 p-2 rounded w-full whitespace-nowrap">
           <button className="px-4 py-2 bg-gray-100 dark:bg-gray-500 dark:text-white rounded-lg text-sm font-medium">
             All hires{" "}
             <span className="ml-2 bg-yellow-400 p-1 rounded text-xs">60</span>
@@ -46,7 +46,7 @@ const Table = ({ tableData }) => {
           </button>
         </div>
         <div className="flex items-center gap-4 p-2 w-full whitespace-nowrap">
-          <button className="bg-[#E5F9A9] hover:bg-[#d9f089] px-4 py-2 rounded-lg flex items-center gap-2">
+          <button className="bg-[#E5F9A9] hover:bg-[#d9f089] text-black px-4 py-2 rounded-lg flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -61,7 +61,7 @@ const Table = ({ tableData }) => {
             </svg>
             Add New
           </button>
-          <button className="border dark:border-gray-400 dark:text-white px-4 py-2 rounded-lg flex items-center gap-2">
+          <button className="border dark:border-gray-400  px-4 py-2 rounded-lg flex items-center gap-2">
             <svg
               width="21"
               height="20"
@@ -85,28 +85,28 @@ const Table = ({ tableData }) => {
 
       {/* Table Content */}
       <div className="overflow-x-auto w-full">
-        <table className="w-full">
-          <thead className="bg-gray-50 dark:bg-gray-700 border rounded-md dark:border-gray-400 w-full whitespace-nowrap">
-            <tr>
-              <th className="w-8 p-4">
-                <input type="checkbox" className="rounded border-gray-300" />
+        <table className="w-full p-6">
+          <thead className="rounded-3xl border border-gray-200 dark:border-gray-700  w-full whitespace-nowrap px-4">
+            <tr className="">
+              <th className="">
+                <input type="checkbox" />
               </th>
-              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+              <th className="text-left text-sm font-medium text-gray-500 dark:text-white">
                 Name
               </th>
-              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+              <th className=" px-2 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
                 Employment ID
               </th>
-              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+              <th className="px-2 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
                 Type of hire
               </th>
-              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+              <th className="px-2 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
                 Country
               </th>
-              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+              <th className="px-2 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
                 License use
               </th>
-              <th className="px-6 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
+              <th className="px-2 py-4 text-left text-sm font-medium text-gray-500 dark:text-white">
                 Status
               </th>
             </tr>
@@ -117,7 +117,9 @@ const Table = ({ tableData }) => {
                 <tr
                   key={i}
                   className={`w-full ${
-                    checkedRows.includes(i) ? "bg-[#F9FAF5] dark:bg-gray-700" : ""
+                    checkedRows.includes(i)
+                      ? "bg-[#F9FAF5] dark:bg-gray-700 rounded-lg"
+                      : ""
                   }`}
                 >
                   <td className="w-8 p-4">
@@ -128,7 +130,7 @@ const Table = ({ tableData }) => {
                       onChange={() => handleCheckboxChange(i)}
                     />
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-4">
                     <div className="flex items-center gap-3">
                       <img src={data.img} alt="" className="l" />
                       <span className="text-sm font-medium dark:text-white">
@@ -136,7 +138,7 @@ const Table = ({ tableData }) => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 dark:text-white">
+                  <td className="p-4 dark:text-white">
                     <div className="flex items-center gap-2">
                       <span className="text-sm">{data.empId}</span>
                       <svg
@@ -166,10 +168,10 @@ const Table = ({ tableData }) => {
                       </svg>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm dark:text-white">
+                  <td className="p-4 text-sm dark:text-white">
                     {data.position}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-4">
                     <div className="flex items-center gap-2">
                       <img
                         src={data.flag}
@@ -181,7 +183,7 @@ const Table = ({ tableData }) => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="p-4">
                     <div className="flex items-center gap-2">
                       <div
                         className={`w-24 h-2  rounded-full dark:bg-gray-500 bg-gray-200`}
@@ -205,7 +207,7 @@ const Table = ({ tableData }) => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 flex flex-col items-end">
+                  <td className="p-4 flex flex-col items-end">
                     <h3
                       className={`px-3 py-1 flex items-center gap-2 ${
                         data.status === "Draft" && "bg-[#FCCE44] text-white"

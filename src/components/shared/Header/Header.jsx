@@ -22,7 +22,7 @@ const Header = () => {
 
 
   return (
-    <div className=" lg:px-6 lg:py-4 p-2 border-b dark:border-gray-400 w-full">
+    <div className=" lg:px-6 lg:py-4 p-2  w-full dark:bg-gray-800 bg-white">
       <div className="max-w-7xl hidden md:flex lg:flex items-start gap-3 justify-between">
         {/* Search Bar */}
         <div className="relative max-w-xl lg:w-full md:w-full">

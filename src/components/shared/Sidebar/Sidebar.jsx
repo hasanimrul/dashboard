@@ -63,7 +63,7 @@ const Sidebar = () => {
       </button>
 
       <div
-        className={`lg:w-64 md:w-64 w-full h-full md:flex lg:flex flex-col border-r border-gray-200 dark:border-gray-400 text-black fixed md:relative lg:relative top-0 left-0 bg-white dark:bg-gray-800 z-50 ${
+        className={`lg:w-64 md:w-64 w-full h-full md:flex lg:flex flex-col text-black fixed md:relative lg:relative top-0 left-0 bg-white dark:bg-gray-800 z-50 ${
           isSidebarOpen ? "block" : "hidden"
         } `}
       >
@@ -134,7 +134,7 @@ const Sidebar = () => {
                   <img
                     src={item.icon}
                     alt={`${item.title} icon`}
-                    className="group-hover:invert"
+                    className=""
                   />
                   <span className="text-[14px]">{item.title}</span>
                 </a>
@@ -151,7 +151,7 @@ const Sidebar = () => {
                   className={`flex items-center gap-3 px-3 py-3 text-gray-600 dark:hover:text-gray-600 dark:text-white rounded-lg hover:bg-[#D9F27E] hover:border-r-4 hover:border-black  hover:dark:border-white hover:dark:font-bold hover:font-bold hover:text-black  group`}
                 >
                   <img
-                    className="group-hover:invert invert-0"
+                    className=""
                     src={item.icon}
                     alt={`${item.title} icon`}
                   />
@@ -163,7 +163,7 @@ const Sidebar = () => {
         </div>
 
         {/* User Profile */}
-        <div className="mt-auto p-2 border-t border-gray-200 dark:border-gray-400">
+        <div className="mt-auto p-2 ">
           <div className="flex items-center justify-between p-2 bg-[#F9FAF5] dark:bg-gray-700 rounded-lg cursor-pointer">
             <div className="flex items-center">
               <img

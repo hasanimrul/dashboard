@@ -72,7 +72,7 @@ const Dashboard = () => {
     },
   ];
   return (
-    <div className="lg:p-8 p-2 text-black w-full">
+    <div className="lg:p-8 p-2 text-black w-full bg-[#F9FAF5] dark:bg-black dark:text-white">
       {/* Header Section */}
       <div className="flex lg:flex-row md:flex-row flex-col justify-between lg:items-center gap-5 mb-8 text-black">
         <div>
